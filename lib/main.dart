@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Konversi Suhu',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const TemperatureConverter(),
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: const MyLoginPage(),
     );
   }
 }
@@ -41,7 +42,6 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
           _reamur = _celsius * 4 / 5;
         });
       } catch (e) {
-        // Handle parsing errors
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Masukkan angka yang valid')),
         );
@@ -52,7 +52,10 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Konversi Suhu')),
+      appBar: AppBar(
+        title: const Text('Konversi Suhu'),
+        backgroundColor: Colors.green,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -69,6 +72,7 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _convertTemperature,
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               child: const Text('Konversi'),
             ),
             const SizedBox(height: 20),
